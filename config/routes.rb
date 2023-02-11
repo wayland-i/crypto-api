@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get '/api_key', to: 'api#show_api_key'
+  get '/products', to: 'api#products'
+  
+  get '/crypto', to: 'api#cmc_api'
+
 end

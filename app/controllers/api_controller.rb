@@ -1,8 +1,22 @@
 class ApiController < ApplicationController
 
-    def show_api_key
+    #GET
+    def products
+
+        response = HTTParty.get('https://dummyjson.com/products')
+        render json: {data: response.body}
+
+        # products = https://dummyjson.com/products
+        # render json: products
+        # render plain: 'hello'
+    end
+
+    #GET
+    def cmc_api
         api_key = ENV['API_KEY']
-        render json: api_key
+        response = HTTParty.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', headers: {'X-CMC_PRO_API_KEY' => api_key})
+        render json: {data: response.body}
+
     end
 
 
