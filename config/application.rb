@@ -39,3 +39,11 @@ module CryptoApi
     config.api_only = true
   end
 end
+
+
+config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*' # or specific origins
+    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+  end
+end

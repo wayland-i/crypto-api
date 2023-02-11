@@ -18,6 +18,9 @@ gem 'dotenv-rails'
 # for httparty
 gem 'httparty'
 
+# for CORS
+gem 'rack-cors'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
