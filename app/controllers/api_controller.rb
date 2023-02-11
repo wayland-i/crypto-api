@@ -4,7 +4,7 @@ class ApiController < ApplicationController
     def products
 
         response = HTTParty.get('https://dummyjson.com/products')
-        render json: {data: response.body}
+        render json: response.body
 
         # products = https://dummyjson.com/products
         # render json: products
