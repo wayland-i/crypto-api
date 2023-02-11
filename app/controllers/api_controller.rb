@@ -16,6 +16,7 @@ class ApiController < ApplicationController
         api_key = ENV['API_KEY']
         response = HTTParty.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?slug=bitcoin', headers: {'X-CMC_PRO_API_KEY' => api_key})
         
+        #this is the correct syntax, do not submit like this {data: response.body}
         render json: response.body
 
         #this was my best attempt before I found the 'rack-cors' gem
