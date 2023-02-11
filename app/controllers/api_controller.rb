@@ -16,9 +16,9 @@ class ApiController < ApplicationController
         api_key = ENV['API_KEY']
         response = HTTParty.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', headers: {'X-CMC_PRO_API_KEY' => api_key})
 
-        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4000/prices'
+        # response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4000'
 
-        render json: {data: response.body}
+        render json: {data: response.body}, headers: {'Access-Control-Allow-Origin' => 'http://localhost:4000'}
 
     end
 
