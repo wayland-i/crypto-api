@@ -14,13 +14,11 @@ class ApiController < ApplicationController
     #GET
     def cmc_api
         api_key = ENV['API_KEY']
-        response = HTTParty.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', headers: {'X-CMC_PRO_API_KEY' => api_key})
-
-        # response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4000'
+        response = HTTParty.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?slug=bitcoin', headers: {'X-CMC_PRO_API_KEY' => api_key})
         
         render json: {data: response.body}
 
-
+        #this was my best attempt before I found the 'rack-cors' gem
         #render json: {data: response.body}, headers: {'Access-Control-Allow-Origin' => 'http://localhost:4000'}
     end
 
