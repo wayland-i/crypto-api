@@ -15,6 +15,19 @@ class LeaderboardsController < ApplicationController
   # POST /leaderboards
   def create
     @leaderboard = Leaderboard.new(leaderboard_params)
+    existing_record = Leaderboard.find_by(player: @leaderboard.player)
+
+
+    if existing_record.present?
+      if @leaderboard.score < existing_record.score
+        render json: { message: "Player has previously scored higher than this" }, status: :unprocessable_entity
+        return
+      else
+        existing_record.destroy
+      end
+    end
+
+
     if Leaderboard.exists?(player: @leaderboard.player, score: @leaderboard.score)
       render json: { message: "Record already exists for player." }, status: :unprocessable_entity
     else
