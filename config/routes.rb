@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   
   get '/crypto', to: 'api#cmc_api'
 
+  get '/historical', to: 'api#daily'
+
 end
