@@ -15,11 +15,14 @@ class LeaderboardsController < ApplicationController
   # POST /leaderboards
   def create
     @leaderboard = Leaderboard.new(leaderboard_params)
-
-    if @leaderboard.save
-      render json: @leaderboard, status: :created, location: @leaderboard
+    if Leaderboard.exists?(player: @leaderboard.player, score: @leaderboard.score)
+      render json: { message: "Record already exists for player." }, status: :unprocessable_entity
     else
-      render json: @leaderboard.errors, status: :unprocessable_entity
+      if @leaderboard.save
+        render json: @leaderboard, status: :created, location: @leaderboard
+      else
+        render json: @leaderboard.errors, status: :unprocessable_entity
+      end
     end
   end
 
