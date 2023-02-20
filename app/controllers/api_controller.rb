@@ -35,6 +35,7 @@ class ApiController < ApplicationController
         # start_time_str = start_time.strftime('%Y-%m-%dT%H:%M:%SZ')
         # end_time_str = now.strftime('%Y-%m-%dT%H:%M:%SZ')
 
+        # https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?slug=bitcoin
         # url = URI("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/historical?symbol=BTC&time_start=#{start_time_str}&time_end=#{end_time_str}")
 
         # render json: now
